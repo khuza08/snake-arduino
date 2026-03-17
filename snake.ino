@@ -370,7 +370,10 @@ void endGame() {
   Serial.print("Game Over! Score: ");
   Serial.println(score);
   
-  delay(2000);
+  while (digitalRead(PUSH_BUTTON) == HIGH) {
+    delay(50);
+  }
+  delay(1000);
 }
 
 void playSound(int frequency, int duration) {
