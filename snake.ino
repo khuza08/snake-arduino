@@ -261,6 +261,8 @@ void updateGame() {
       snakeLength++;
     }
     generateFood();
+    lastFoodX = -1;
+    lastFoodY = -1;
   }
   
   snake[0].x = newHeadX;
@@ -294,9 +296,9 @@ void renderGame() {
   }
   
   if (snakeLength > 0 && (snake[snakeLength - 1].x != lastTailX || snake[snakeLength - 1].y != lastTailY)) {
-    int tailX = GAME_X + snake[snakeLength - 1].x * CELL_SIZE;
-    int tailY = GAME_Y + snake[snakeLength - 1].y * CELL_SIZE;
-    tft.fillRect(tailX, tailY, CELL_SIZE, CELL_SIZE, COLOR_BG);
+    int oldTailX = GAME_X + lastTailX * CELL_SIZE;
+    int oldTailY = GAME_Y + lastTailY * CELL_SIZE;
+    tft.fillRect(oldTailX, oldTailY, CELL_SIZE, CELL_SIZE, COLOR_BG);
     lastTailX = snake[snakeLength - 1].x;
     lastTailY = snake[snakeLength - 1].y;
   }
@@ -319,7 +321,7 @@ void renderGame() {
     tft.setTextSize(1);
     tft.setTextColor(COLOR_BG);
     tft.setCursor(5, 5);
-    tft.print("Score: 0       "); // Clear old score
+    tft.print("Score: 0       ");
     
     tft.setTextColor(COLOR_TEXT);
     tft.setCursor(5, 5);
