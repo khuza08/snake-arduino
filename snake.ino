@@ -93,11 +93,11 @@ void setup() {
 
 void loop() {
   if (!gameActive && !gameOver) {
-    if (digitalRead(PUSH_BUTTON) == LOW) {
+    if (digitalRead(PUSH_BUTTON) == HIGH) {
       initializeGame();
       gameActive = true;
       lastMoveTime = millis();
-      delay(300);
+      delay(500);
     }
   } 
   else if (gameActive) {
@@ -115,11 +115,11 @@ void loop() {
     renderGame();
   } 
   else if (gameOver) {
-    if (digitalRead(PUSH_BUTTON) == LOW) {
+    if (digitalRead(PUSH_BUTTON) == HIGH) {
       gameActive = false;
       gameOver = false;
       showTitleScreen();
-      delay(300);
+      delay(500);
     }
   }
   
