@@ -253,6 +253,10 @@ void updateGame() {
       snake[i].y = snake[i - 1].y;
     }
   } else {
+    for (int i = snakeLength; i > 0; i--) {
+      snake[i].x = snake[i - 1].x;
+      snake[i].y = snake[i - 1].y;
+    }
     if (snakeLength < MAX_SNAKE_LENGTH) {
       snakeLength++;
     }
