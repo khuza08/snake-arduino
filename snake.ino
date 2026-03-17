@@ -287,6 +287,8 @@ void generateFood() {
 }
 
 void renderGame() {
+  // Draw head if it moved - only redraws when position changes
+  // This is efficient because head moves every frame
   if (snake[0].x != lastHeadX || snake[0].y != lastHeadY) {
     int x = GAME_X + snake[0].x * CELL_SIZE;
     int y = GAME_Y + snake[0].y * CELL_SIZE;
@@ -295,6 +297,9 @@ void renderGame() {
     lastHeadY = snake[0].y;
   }
   
+  // Clear old tail position when tail moves
+  // This removes the tail pixel as snake moves forward (normal mode without food)
+  // When food eaten, lastTailX/Y is reset to -1, skip this
   if (snakeLength > 0 && (snake[snakeLength - 1].x != lastTailX || snake[snakeLength - 1].y != lastTailY)) {
     int oldTailX = GAME_X + lastTailX * CELL_SIZE;
     int oldTailY = GAME_Y + lastTailY * CELL_SIZE;
@@ -303,6 +308,7 @@ void renderGame() {
     lastTailY = snake[snakeLength - 1].y;
   }
   
+  // Draw food only when position changes (when newly generated)
   if (foodX != lastFoodX || foodY != lastFoodY) {
     if (lastFoodX != -1) {
       int oldFoodX = GAME_X + lastFoodX * CELL_SIZE;
@@ -317,6 +323,7 @@ void renderGame() {
     lastFoodY = foodY;
   }
   
+  // Update score display only when score changes
   if (score != lastScore) {
     tft.setTextSize(1);
     tft.setTextColor(COLOR_BG);
@@ -370,9 +377,16 @@ void endGame() {
   Serial.print("Game Over! Score: ");
   Serial.println(score);
   
+  // FIX: Wait for button release before returning to main loop
+  // Problem: Button might still be held from the collision that killed the snake
+  // Without this wait, main loop would immediately detect HIGH state and start new game
+  // This blocking loop forces player to release button first
   while (digitalRead(PUSH_BUTTON) == HIGH) {
     delay(50);
   }
+  
+  // Additional 1 second delay prevents accidental re-press
+  // Gives player time to see game over screen and prepare for restart
   delay(1000);
 }
 
