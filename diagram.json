@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "author": "elza(khuza08)",
+  "editor": "wokwi da besss",
+  "parts": [
+    { "type": "wokwi-arduino-mega", "id": "mega", "top": -153, "left": -22.8, "attrs": {} },
+    { "type": "wokwi-analog-joystick", "id": "joystick1", "top": -417, "left": 314, "attrs": {} },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": -224.2,
+      "left": 316.8,
+      "attrs": { "color": "green", "xray": "1" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -256.8,
+      "left": 414.6,
+      "attrs": { "volume": "0.1" }
+    },
+    {
+      "type": "wokwi-ili9341",
+      "id": "lcd2",
+      "top": -475.1,
+      "left": 39.6,
+      "rotate": 90,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "mega:40", "bz1:1", "gray", [ "v1.25", "h-11.8", "v-105.6", "h105.6" ] ],
+    [ "bz1:2", "mega:GND.4", "white", [ "v28.8", "h-86.8", "v152.65" ] ],
+    [ "btn1:1.l", "mega:5V", "red", [ "h-38.4", "v163.2", "h-136.7" ] ],
+    [ "btn1:1.r", "mega:GND.2", "gray", [ "h9.8", "v-19.2", "h-144", "v230.4", "h-96", "v31.5" ] ],
+    [ "btn1:2.l", "mega:44", "gold", [ "v162.2" ] ],
+    [ "lcd2:VCC", "mega:5V.1", "red", [ "v-5.5", "h-17.7", "v230.4", "h353.7", "v-14.7" ] ],
+    [ "lcd2:CS", "mega:10", "gold", [ "h-9.6", "v19.2", "v163.2", "h153.9" ] ],
+    [ "lcd2:RST", "mega:8", "orange", [ "h-28.8", "v144", "h182.4", "v28.8", "h9.6", "v9.6" ] ],
+    [ "lcd2:GND", "mega:GND.1", "black", [ "h9.6", "v38.4", "v144", "h96.2" ] ],
+    [ "lcd2:D/C", "mega:9", "green", [ "h19.2", "v172.8" ] ],
+    [
+      "mega:51",
+      "lcd2:MOSI",
+      "blue",
+      [ "v1", "h26.2", "v-163.2", "h-211.2", "v-28.8", "h-211.2", "v-115.19" ]
+    ],
+    [
+      "mega:52",
+      "lcd2:SCK",
+      "purple",
+      [ "v1.1", "h-40.6", "v-182.4", "h-124.8", "v-28.8", "h-230.4", "v-95.99" ]
+    ],
+    [
+      "mega:5V.2",
+      "lcd2:LED",
+      "red",
+      [ "v-8.6", "h-41", "h-144", "v-9.6", "h-9.6", "v-9.6", "h-220.8", "v-115.19" ]
+    ],
+    [ "mega:50", "lcd2:MISO", "white", [ "v1", "h-31", "v-124.8", "h-316.8" ] ],
+    [ "joystick1:SEL", "mega:42", "green", [ "v48", "h9.6", "v211.2" ] ],
+    [
+      "joystick1:GND",
+      "mega:GND.3",
+      "black",
+      [
+        "v38.4",
+        "h-76.8",
+        "v0",
+        "h-9.6",
+        "v19.2",
+        "h-19.2",
+        "v9.6",
+        "h-9.6",
+        "v48",
+        "h-86.4",
+        "v163.2",
+        "h-19.2"
+      ]
+    ],
+    [ "joystick1:VERT", "mega:A1", "blue", [ "v57.6", "h-48", "v19.2", "h-115.2" ] ],
+    [ "joystick1:HORZ", "mega:A2", "magenta", [ "v48", "h-48", "v48", "h-115.2" ] ],
+    [
+      "joystick1:VCC",
+      "mega:5V.1",
+      "red",
+      [ "v28.8", "h-57.6", "v86.4", "h19.2", "v9.6", "h28.8" ]
+    ]
+  ],
+  "dependencies": {}
+}
