@@ -67,6 +67,7 @@ A classic Snake game on Arduino Mega with ILI9341 TFT display and analog joystic
 - Display rotated 90° for landscape mode
 - Joystick axes inverted due to rotation
 - Button debouncing prevents accidental triggers
+- You can [try my version here](https://wokwi.com/projects/458779799548524545), or you can build it yourself!
 
 ## Disclaimer
 
