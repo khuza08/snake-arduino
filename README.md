@@ -9,7 +9,8 @@ A classic Snake game on Arduino Mega with ILI9341 TFT display and analog joystic
 - Analog Joystick Module
 - Push Button (green)
 - Buzzer (passive)
-<img height="512" alt="sorry for bad wiring xD" src="https://github.com/user-attachments/assets/4aa025ab-8569-4b24-88e1-befb12c38f74" />
+<img height="480" alt="sorry for bad wiring xD" src="https://github.com/user-attachments/assets/4aa025ab-8569-4b24-88e1-befb12c38f74" />
+  <br/>the wiring look sad, my bad.
 
 ## Pin Connections
 
